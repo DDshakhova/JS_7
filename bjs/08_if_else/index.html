@@ -7,20 +7,21 @@
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="style.css" type="text/css"/>
-    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
 </head>
 <body>
+    
 <div class="container">
     <div class="row game-card align-items-center">
         <div class="col col-md-4 offset-md-4">
             <div class="card text-center">
                 <div class="card-header">
-                    <p class="m-0">Вопрос №<span id="orderNumberField">5</span></p>
+                    <p class="m-0">Вопрос №<span id="orderNumberField">0</span></p>
                 </div>
                 <div class="card-body">
                     <div class="row no-gutters">
                         <div class="col">
-                            <h3 class="card-title m-0"><span id="answerField">Вы загадали число 5?</span></h3>
+                            <h3 class="card-title m-0"><span id="answerField">Сыграем?</span></h3>
                         </div>
                     </div>
                 </div>
@@ -34,18 +35,42 @@
                 <div class="card-footer">
 
                     
-                    <!-- <div class="btn-group">
+                    <div class="btn-group">
                         <button class="btn btn-link" data-bs-toggle = "collapse" data-bs-target = "#collapseC" aria-expanded = "false"  aria-controls= "collapseC" id="btnGame">
                             Играть
-                        </button> -->
+                        </button>
 
-                    <button class="btn btn-link" id="btnRetry">Заново</button>
+                    <button class="btn btn-link" id="btnReset">Обнулить</button>
+                    </div>
                 </div>
+
+                <div class="collapse" id="collapseC">
+                    <div class="card card-body text-center">
+                        <form>
+                            <div class="form-group">
+                                <label for="minValue">Введите минимальное значение</label><br>
+                                <input type="number" class="form-contorol" id = "minValue" aria-describedby="minHelp">
+                                <small id="minHelp" class="form-text text-muted">Минимальное значение для ввода: -999!</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="maxValue">Введите максимальное значение</label><br>
+                                <input type="number" class="form-contorol" id = "maxValue" aria-describedby="maxHelp">
+                                <small id="maxHelp" class="form-text text-muted">Максимальное значение для ввода: 999!</small>
+                            </div>
+                            
+                        </form>
+                        <button type="submit" data-bs-toggle = "collapse" data-bs-target = "#collapseC" aria-expanded = "false"  aria-controls= "collapseC" id="btnStart" >
+                            Старт
+                        </button>
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </div>
 </div>
 <script src="script.js"></script>
-<script src="/js/bootstrap.js"></script>
+<script src="js/bootstrap.js"></script>
 </body>
 </html>

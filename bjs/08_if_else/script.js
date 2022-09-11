@@ -1,29 +1,42 @@
 // рабочие переменные
-let gameRun;
+let gameRun = true;
 
 const orderNumberField = document.querySelector('#orderNumberField');
 let orderNumber;
 const answerField = document.querySelector('#answerField');
 
+// let minValue = document.querySelector("#minValue").value;
+// let maxValue = document.querySelector("#maxValue").value;
+let minValue;
+let maxValue;
+let answerNumber;
 
-let answerNumber  = Math.floor((minValue + maxValue) / 2);
+
+// copycat
+document.querySelector("#btnStart").addEventListener('click', function() {
+  
+  // получение введённых данных и их проверка
+  minValue = Number(document.querySelector("#minValue").value);
+  console.log(minValue);
+  maxValue = Number(document.querySelector("#maxValue").value);
+  console.log(maxValue);
+  valuesCheck();
+
+  answerNumber = Math.floor((minValue + maxValue) / 2);
+// старт игры и вывод первого вопроса
+  orderNumber = 1;
+  
+  gameRun = true;
+  orderNumberField.innerText = orderNumber;
+  answerField.innerText = `Вы загадали число ${letters(answerNumber)}?`;
+});
+// copycatend
 
 
-// получение введённых данных и их проверка
-let minValue = parseInt(prompt('Минимальное значение числа для игры','0'));
-let maxValue = parseInt(prompt('Максимальное значение числа для игры','100'));
-valuesCheck();
+
 // сообщение пользователю 
 // мб поместить в ансерфилд а по нажатию на играть менять вопрос
-alert(`Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю`);
-
-// старт игры и вывод первого вопроса
-
-orderNumber = 1;
-gameRun = true;
-
-orderNumberField.innerText = orderNumber;
-answerField.innerText = `Вы загадали число ${letters(answerNumber)}?`;
+// alert(`Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю`);
 
 // функция проверки допустимости значений
 function valuesCheck () {
@@ -46,13 +59,13 @@ switch (isNaN(maxValue) || maxValue) {
 
 //функция текстового представления чисел
 function letters () {
-  const oneToTen = [" ", "один", "два", "три", "четыре", "пять", "шесть", "семь", "восемь", "девять", "десять"];
+  const oneToTen = ["один", "два", "три", "четыре", "пять", "шесть", "семь", "восемь", "девять", "десять"];
 
-  const elevenToNineteen = [" ", "одиннадцать", "двенадцать", "тринадцать", "четырнадцать", "пятнадцать", "шестнадцать", "семнадцать", "восемнадцать", "девятнадцать"];
+  const elevenToNineteen = ["одиннадцать", "двенадцать", "тринадцать", "четырнадцать", "пятнадцать", "шестнадцать", "семнадцать", "восемнадцать", "девятнадцать"];
 
-  let twentyToNinety = [" ", " ", "двадцать", "тридцать", "сорок", "пятьдесят", "шестьдесят", "семьдесят", "восемьдесят", "девяносто"];
+  let twentyToNinety = ["двадцать", "тридцать", "сорок", "пятьдесят", "шестьдесят", "семьдесят", "восемьдесят", "девяносто"];
 
-  let hundreds = [" ", "сто","двести","триста", "четыреста", "пятьсот", "шестьсот", "семьсот", "восемьсот", "девятьсот"];
+  let hundreds = ["сто","двести","триста", "четыреста", "пятьсот", "шестьсот", "семьсот", "восемьсот", "девятьсот"];
 
   let textAnswerNumber;
 
@@ -71,20 +84,20 @@ let minusSign = (answerNumber < 0) ? 'минус' : '';
 
   //числа 10-19
   if(functAnswerNumber > 10 && functAnswerNumber < 20) {
-      textAnswerNumber = elevenToNineteen[functAnswerNumber%10];
+      textAnswerNumber = elevenToNineteen[functAnswerNumber%10 - 1];
   }
   //остальные числа
   else { 
       if(functAnswerNumber === 0) {textAnswerNumber = 0}
-      thirdRank = hundreds[(functAnswerNumber-functAnswerNumber%100)/100];
+      thirdRank = hundreds[(functAnswerNumber-functAnswerNumber%100)/100 - 1];
 
       // answerNumber < 0 ? 
       // secondRank = twentyToNinety[(functAnswerNumber%100-functAnswerNumber%10)/10-1] :
-      secondRank = twentyToNinety[(functAnswerNumber%100-functAnswerNumber%10)/10];
+      secondRank = twentyToNinety[(functAnswerNumber%100-functAnswerNumber%10)/10 - 2];
 
       firstRank = oneToTen[functAnswerNumber%10-1];
       
-      textAnswerNumber =  `${thirdRank === undefined ? '' : thirdRank} ${secondRank === undefined ? '' : secondRank} ${firstRank === undefined ? '' : firstRank}`;
+      textAnswerNumber = `${thirdRank === undefined ? '' : thirdRank} ${secondRank === undefined ? '' : secondRank} ${firstRank === undefined ? '' : firstRank}`;
   }
 // ноль записывается как 0 и никак иначе
   if(functAnswerNumber === 0) { 
@@ -101,15 +114,27 @@ let minusSign = (answerNumber < 0) ? 'минус' : '';
 }
 // конец функции текстового представления чисел
 
-// кнопка заново
-document.querySelector('#btnRetry').addEventListener('click', (event) => {
-    minValue = parseInt(prompt('Задайте новое минимальное значение числа для игры','0'));
-    maxValue = parseInt(prompt('Задайте новое максимальное значение числа для игры','100'));
+// кнопка обнулить
+document.querySelector('#btnReset').addEventListener('click', (event) => {
+    // minValue = parseInt(prompt('Задайте новое минимальное значение числа для игры','0'));
+    // maxValue = parseInt(prompt('Задайте новое максимальное значение числа для игры','100'));
+    // valuesCheck();
+    // alert(`Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю`);
+    // answerNumber  = Math.floor((minValue + maxValue) / 2);
+    // orderNumber = 1;
+    // gameRun = true;
+    // orderNumberField.innerText = orderNumber;
+    // answerField.innerText = `Вы загадали число ${letters(answerNumber)}?`;
+    minValue = Number(document.querySelector("#minValue").value);
+    console.log(minValue);
+    maxValue = Number(document.querySelector("#maxValue").value);
+    console.log(maxValue);
     valuesCheck();
-    alert(`Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю`);
-    answerNumber  = Math.floor((minValue + maxValue) / 2);
+  
+    answerNumber = Math.floor((minValue + maxValue) / 2);
+  // старт игры и вывод первого вопроса
     orderNumber = 1;
-    gameRun = true;
+    // gameRun = true;
     orderNumberField.innerText = orderNumber;
     answerField.innerText = `Вы загадали число ${letters(answerNumber)}?`;
 })
@@ -132,8 +157,8 @@ document.querySelector('#btnOver').addEventListener('click', function () {
                   gameRun = false; 
             } 
         else {
-            minValue = answerNumber  + 1;
-            answerNumber  = Math.floor((minValue + maxValue) / 2);
+            minValue = answerNumber + 1;
+            answerNumber = Math.floor((minValue + maxValue) / 2);
             orderNumber++;
             orderNumberField.innerText = orderNumber;
             const phraseRandom = Math.floor(Math.random() * 4);
@@ -170,7 +195,7 @@ document.querySelector('#btnLess').addEventListener('click', function () {
               gameRun = false; 
         } else {
             maxValue = answerNumber - 1;
-            answerNumber  = Math.ceil((minValue + maxValue) / 2);
+            answerNumber = Math.ceil((minValue + maxValue) / 2);
             orderNumber++;
             orderNumberField.innerText = orderNumber;
             const phraseRandom = Math.round(Math.random() * 4);
@@ -184,8 +209,8 @@ document.querySelector('#btnLess').addEventListener('click', function () {
                   } else {
                     answerPhrase = `Это ${textAnswer}? Правда ведь?`;
                   }
-                  answerField.innerText = answerPhrase;
-        }
+                  answerField.innerText = answerPhrase; 
+                }
     }
 })
 
@@ -206,4 +231,3 @@ document.querySelector('#btnEqual').addEventListener('click', function () {
         gameRun = false;
     }
 })
-
