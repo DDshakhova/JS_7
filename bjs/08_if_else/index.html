@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="css/bootstrap.css">
 </head>
 <body>
-    
 <div class="container">
     <div class="row game-card align-items-center">
         <div class="col col-md-4 offset-md-4">
@@ -33,39 +32,40 @@
                     </div>
                 </div>
                 <div class="card-footer">
-
-                    
                     <div class="btn-group">
                         <button class="btn btn-link" data-bs-toggle = "collapse" data-bs-target = "#collapseC" aria-expanded = "false"  aria-controls= "collapseC" id="btnGame">
                             Играть
                         </button>
 
-                    <button class="btn btn-link" id="btnReset">Обнулить</button>
+                    <button class="btn btn-link" id="btnRetry">Сначала</button>
                     </div>
                 </div>
-
                 <div class="collapse" id="collapseC">
                     <div class="card card-body text-center">
                         <form>
                             <div class="form-group">
                                 <label for="minValue">Введите минимальное значение</label><br>
                                 <input type="number" class="form-contorol" id = "minValue" aria-describedby="minHelp">
-                                <small id="minHelp" class="form-text text-muted">Минимальное значение для ввода: -999!</small>
+                                <small id="minHelp" class="form-text text-muted">Минимальное значение для ввода: -999</small>
                             </div>
                             <div class="form-group">
                                 <label for="maxValue">Введите максимальное значение</label><br>
                                 <input type="number" class="form-contorol" id = "maxValue" aria-describedby="maxHelp">
-                                <small id="maxHelp" class="form-text text-muted">Максимальное значение для ввода: 999!</small>
+                                <small id="maxHelp" class="form-text text-muted">Максимальное значение для ввода: 999</small>
                             </div>
-                            
                         </form>
+                        <div id="duplicateFields">
+                        <p><b>Загадайте число от</b></p>
+                        <div id="duplicateFieldMin"></div>
+                        <p><b>до</b></p>
+                        <div id="duplicateFieldMax"></div>
+                        <p><b>и я его угадаю!</b></p>
+                        </div>
                         <button type="submit" data-bs-toggle = "collapse" data-bs-target = "#collapseC" aria-expanded = "false"  aria-controls= "collapseC" id="btnStart" >
                             Старт
                         </button>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>

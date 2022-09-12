@@ -5,14 +5,23 @@ const orderNumberField = document.querySelector('#orderNumberField');
 let orderNumber;
 const answerField = document.querySelector('#answerField');
 
-// let minValue = document.querySelector("#minValue").value;
-// let maxValue = document.querySelector("#maxValue").value;
 let minValue;
 let maxValue;
 let answerNumber;
 
+const fieldCopyMin = document.querySelector('#duplicateFieldMin');
+const fieldCopyMax = document.querySelector('#duplicateFieldMax');
 
-// copycat
+// замена исходного alert дублированием вводимого текста
+document.querySelector("#minValue").addEventListener('input', 
+  function (event) {
+    fieldCopyMin.textContent = event.target.value;
+})
+document.querySelector("#maxValue").addEventListener('input', 
+  function (event) {
+    fieldCopyMax.textContent = event.target.value;
+})
+// кнопка старт
 document.querySelector("#btnStart").addEventListener('click', function() {
   
   // получение введённых данных и их проверка
@@ -23,20 +32,14 @@ document.querySelector("#btnStart").addEventListener('click', function() {
   valuesCheck();
 
   answerNumber = Math.floor((minValue + maxValue) / 2);
-// старт игры и вывод первого вопроса
+// начало игры и вывод первого вопроса
   orderNumber = 1;
   
   gameRun = true;
   orderNumberField.innerText = orderNumber;
   answerField.innerText = `Вы загадали число ${letters(answerNumber)}?`;
 });
-// copycatend
-
-
-
-// сообщение пользователю 
-// мб поместить в ансерфилд а по нажатию на играть менять вопрос
-// alert(`Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю`);
+// конец 
 
 // функция проверки допустимости значений
 function valuesCheck () {
@@ -77,11 +80,6 @@ function letters () {
 let functAnswerNumber = Math.abs(answerNumber); 
 let minusSign = (answerNumber < 0) ? 'минус' : '';
 
-// //  обработка чисел 1-10
-//  if(functAnswerNumber > 0 && functAnswerNumber < 11) {
-//   textAnswerNumber = `${oneToTen[functAnswerNumber.valueOf]}`;
-//  }
-
   //числа 10-19
   if(functAnswerNumber > 10 && functAnswerNumber < 20) {
       textAnswerNumber = elevenToNineteen[functAnswerNumber%10 - 1];
@@ -91,19 +89,22 @@ let minusSign = (answerNumber < 0) ? 'минус' : '';
       if(functAnswerNumber === 0) {textAnswerNumber = 0}
       thirdRank = hundreds[(functAnswerNumber-functAnswerNumber%100)/100 - 1];
 
+      // отключённый участок
       // answerNumber < 0 ? 
       // secondRank = twentyToNinety[(functAnswerNumber%100-functAnswerNumber%10)/10-1] :
+
       secondRank = twentyToNinety[(functAnswerNumber%100-functAnswerNumber%10)/10 - 2];
 
       firstRank = oneToTen[functAnswerNumber%10-1];
       
       textAnswerNumber = `${thirdRank === undefined ? '' : thirdRank} ${secondRank === undefined ? '' : secondRank} ${firstRank === undefined ? '' : firstRank}`;
   }
-// ноль записывается как 0 и никак иначе
+  // ноль записывается как 0 и никак иначе
   if(functAnswerNumber === 0) { 
       return 0;
   }
 
+  // отключённый участок
   // if(functAnswerNumber < 0) 
   //   textAnswerNumber =  textAnswerNumber * -1 + 'минус' + '';
   
@@ -114,17 +115,8 @@ let minusSign = (answerNumber < 0) ? 'минус' : '';
 }
 // конец функции текстового представления чисел
 
-// кнопка обнулить
-document.querySelector('#btnReset').addEventListener('click', (event) => {
-    // minValue = parseInt(prompt('Задайте новое минимальное значение числа для игры','0'));
-    // maxValue = parseInt(prompt('Задайте новое максимальное значение числа для игры','100'));
-    // valuesCheck();
-    // alert(`Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю`);
-    // answerNumber  = Math.floor((minValue + maxValue) / 2);
-    // orderNumber = 1;
-    // gameRun = true;
-    // orderNumberField.innerText = orderNumber;
-    // answerField.innerText = `Вы загадали число ${letters(answerNumber)}?`;
+// кнопка сначала
+document.querySelector('#btnRetry').addEventListener('click', (event) => {
     minValue = Number(document.querySelector("#minValue").value);
     console.log(minValue);
     maxValue = Number(document.querySelector("#maxValue").value);
@@ -132,9 +124,8 @@ document.querySelector('#btnReset').addEventListener('click', (event) => {
     valuesCheck();
   
     answerNumber = Math.floor((minValue + maxValue) / 2);
-  // старт игры и вывод первого вопроса
     orderNumber = 1;
-    // gameRun = true;
+    gameRun = true;
     orderNumberField.innerText = orderNumber;
     answerField.innerText = `Вы загадали число ${letters(answerNumber)}?`;
 })
