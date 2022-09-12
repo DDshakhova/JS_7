@@ -58,6 +58,8 @@ switch (isNaN(maxValue) || maxValue) {
       maxValue = maxValue > 999 ? 999 : maxValue;
 }
 }
+// в виду особенностей данной реализации проверка на NaN не требуется
+// я оставила её чтобы продемонстрировать, что могу это написать, как и требовалось в задании
 // конец функции
 
 //функция текстового представления чисел
@@ -109,6 +111,8 @@ let minusSign = (answerNumber < 0) ? 'минус' : '';
   //   textAnswerNumber =  textAnswerNumber * -1 + 'минус' + '';
   
   // ограничение длины 
+  // в последствии можно увеличить значение допустимой длины
+  // 20 стоит по требованию задания
   else {
       return textAnswerNumber.length <= 20 ? minusSign + " " + textAnswerNumber : answerNumber;
   }
