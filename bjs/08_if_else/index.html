@@ -13,7 +13,7 @@
 <div class="container">
     <div class="row game-card align-items-center">
         <div class="col col-md-4 offset-md-4">
-            <div class="card text-center">
+            <div class="card text-center" id="theCard">
                 <div class="card-header">
                     <p class="m-0">Вопрос №<span id="orderNumberField">0</span></p>
                 </div>
@@ -56,9 +56,9 @@
                         </form>
                         <div id="duplicateFields">
                         <p><b>Загадайте число от</b></p>
-                        <div id="duplicateFieldMin"></div>
+                        <div id="duplicateFieldMin" class="duplicate"></div>
                         <p><b>до</b></p>
-                        <div id="duplicateFieldMax"></div>
+                        <div id="duplicateFieldMax" class="duplicate"></div>
                         <p><b>и я его угадаю!</b></p>
                         </div>
                         <button type="submit" data-bs-toggle = "collapse" data-bs-target = "#collapseC" aria-expanded = "false"  aria-controls= "collapseC" id="btnStart" >

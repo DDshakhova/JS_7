@@ -1,4 +1,50 @@
+body {
+    background: rgb(107, 134, 134) url(./images/photo-1603290989526-572939369f38.avif) bottom no-repeat;
+}
+
 .game-card {
     height: 100vh;
     font-family: 'Open Sans', monospace;
+}
+
+#theCard {
+    width: 400px;
+    opacity: 85%;
+    border-radius: 0%;
+    border: 2px solid black;
+}
+
+div.card-header,div.card-footer {
+    background-color: black;
+    color: aliceblue;
+}
+
+div .card-footer button {
+    color: aliceblue;
+}
+
+#btnOver,#btnLess {
+    background-color: #1D2244;
+    color: aliceblue;
+    border-color: #1D2244;
+}
+
+#btnEqual {
+    background-color: #004636;
+    border-color: #004636;
+}
+
+#btnStart {
+    background-color: #46173A;
+    color: aliceblue;
+}
+
+#duplicateFields {
+    border-top: 1px dashed;
+}
+
+.duplicate {
+    color: #46173A;
+    margin-bottom: 10px;
+    font-weight: 900;
 }
