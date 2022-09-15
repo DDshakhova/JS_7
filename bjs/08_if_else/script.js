@@ -26,9 +26,7 @@ document.querySelector("#btnStart").addEventListener('click', function() {
   
   // получение введённых данных и их проверка
   minValue = Number(document.querySelector("#minValue").value);
-  console.log(minValue);
   maxValue = Number(document.querySelector("#maxValue").value);
-  console.log(maxValue);
   valuesCheck();
 
   answerNumber = Math.floor((minValue + maxValue) / 2);
@@ -38,7 +36,7 @@ document.querySelector("#btnStart").addEventListener('click', function() {
   gameRun = true;
   orderNumberField.innerText = orderNumber;
   answerField.innerText = `Вы загадали число ${letters(answerNumber)}?`;
-});
+})
 // конец 
 
 // функция проверки допустимости значений
@@ -122,9 +120,7 @@ let minusSign = (answerNumber < 0) ? 'минус' : '';
 // кнопка сначала
 document.querySelector('#btnRetry').addEventListener('click', (event) => {
     minValue = Number(document.querySelector("#minValue").value);
-    console.log(minValue);
     maxValue = Number(document.querySelector("#maxValue").value);
-    console.log(maxValue);
     valuesCheck();
   
     answerNumber = Math.floor((minValue + maxValue) / 2);
