@@ -75,7 +75,7 @@ const personGenerator = {
         }
     },
 
-     randomSurname: function() {
+    randomSurname: function() {
         if (this.person.gender === this.GENDER_FEMALE) {
             return this.randomValue(this.surnameJson) + 'a';
         }
@@ -86,12 +86,16 @@ const personGenerator = {
 
     },
 
+    randomBirthYear: function() {
+        return this.randomIntNumber(max = 2004, min = 1960);
+    },
 
     getPerson: function () {
         this.person = {};
         this.person.gender = this.randomGender();
         this.person.firstName = this.randomFirstName();
         this.person.surname = this.randomSurname();
+        this.person.birthYear = this.randomBirthYear();
         return this.person;
     }
 };
