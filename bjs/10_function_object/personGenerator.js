@@ -43,11 +43,26 @@ const personGenerator = {
             "id_3": "Илона",
             "id_4": "Арина",
             "id_5": "Дарья",
-            "id_6": "Вероника",
+            "id_6": "Вера",
             "id_7": "Марина",
             "id_8": "Диана",
             "id_9": "Ева",
             "id_10": "Алиса"
+        }
+    }`,
+    patronymicJson: `{
+        "count": 10,
+        "list": {
+            "id_1": "Николаев",
+            "id_2": "Александров",
+            "id_3": "Валентинов",
+            "id_4": "Петров",
+            "id_5": "Васильев",
+            "id_6": "Давидов",
+            "id_7": "Михайлов",
+            "id_8": "Евгеньев",
+            "id_9": "Ярославов",
+            "id_10": "Дмитриев"
         }
     }`,
 
@@ -82,12 +97,19 @@ const personGenerator = {
         else {
             return this.randomValue(this.surnameJson);
         }
-      
+    },
 
+    randomPatronymic: function () {
+        if (this.person.gender === this.GENDER_FEMALE) {
+            return this.randomValue(this.patronymicJson) + 'на';
+        }
+        else {
+        return this.randomValue(this.patronymicJson) + 'ич';
+        }
     },
 
     randomBirthYear: function() {
-        return this.randomIntNumber(max = 2004, min = 1960);
+        return this.randomIntNumber(2004, 1960) + ' г.р.';
     },
 
     getPerson: function () {
@@ -95,6 +117,7 @@ const personGenerator = {
         this.person.gender = this.randomGender();
         this.person.firstName = this.randomFirstName();
         this.person.surname = this.randomSurname();
+        this.person.patronymic = this.randomPatronymic();
         this.person.birthYear = this.randomBirthYear();
         return this.person;
     }
