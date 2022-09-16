@@ -65,6 +65,23 @@ const personGenerator = {
             "id_10": "Дмитриев"
         }
     }`,
+    monthsJson: `{
+        "count": 12,
+        "list": {     
+            "id_1": {"name": "января", "days": 31},
+            "id_2": {"name": "февраля", "days": 28},
+            "id_3": {"name": "марта", "days": 31},
+            "id_4": {"name": "апреля", "days": 30},
+            "id_5": {"name": "мая", "days": 31},
+            "id_6": {"name": "июня", "days": 30},
+            "id_7": {"name": "июля", "days": 31},
+            "id_8": {"name": "августа", "days": 31},
+            "id_9": {"name": "сентября", "days": 30},
+            "id_10": {"name": "октября", "days": 31},
+            "id_11": {"name": "ноября", "days": 30},
+            "id_12": {"name": "декабря", "days": 31}
+        }
+    }`,
     professionMaleJson: `{
         "count": 10,
         "list": {
@@ -138,8 +155,10 @@ const personGenerator = {
         }
     },
 
-    randomBirthYear: function() {
-        return this.randomIntNumber(2004, 1960) + ' г.р.';
+    randomDateOfBirth: function() {
+        let birthMonth = this.randomValue(this.monthsJson); 
+        let birthYear = this.randomIntNumber(2004, 1960) + ' г.р.';
+        return this.randomIntNumber(birthMonth.days,1) + ' ' + birthMonth.name + ' ' + birthYear; 
     },
 
     randomProfession: function () {
@@ -157,7 +176,7 @@ const personGenerator = {
         this.person.firstName = this.randomFirstName();
         this.person.surname = this.randomSurname();
         this.person.patronymic = this.randomPatronymic();
-        this.person.birthYear = this.randomBirthYear();
+        this.person.dateOfBirth = this.randomDateOfBirth();
         this.person.profession = this.randomProfession();
         return this.person;
     }
