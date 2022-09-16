@@ -1,0 +1,29 @@
+body {
+	background: linear-gradient(70deg, rgb(80, 65, 99), powderblue);
+	height: 99vh;
+	padding: 20px;
+  }
+
+
+.card-body {
+    font: 14px Courier New, monospace;
+}
+
+.text-center {
+    width: 600px;
+    height: 340px;
+    box-shadow: 0 27px 55px 0 rgba(0, 0, 0, .7), 0 17px 17px 0 rgba(0, 0, 0, .5);
+    margin-top: 100px;
+    
+    background-color: gainsboro;
+}
+
+#button-generation {
+    background-color: slateblue;
+    border: 5px;
+}
+
+#button-cleaner {
+    background-color: rgba(34, 34, 34, 0.829);
+    border: 5px;
+}
