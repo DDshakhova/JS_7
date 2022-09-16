@@ -7,5 +7,7 @@ window.onload = function()
     document.querySelector('#patronymicOutput').innerText = initPerson.patronymic;
     document.querySelector('#genderOutput').innerText = initPerson.gender;
     document.querySelector('#birthYearOutput').innerText = initPerson.birthYear;
+    document.querySelector('#professionOutput').innerText = initPerson.profession;
+
 };
 
